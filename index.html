@@ -1,10 +1,37 @@
 <html>
 <head>
- <input type="text" id="my_input1" />
-<input type="text" id="my_input2" />
-<input type="button" value="Suma" onclick="doSum();" />
-<input type="button" value="Produsul" onclick="doProd() ;" />
+<style>
+.button1 {
+  background-color: #4CAF50;
+  border: red;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.text1 {
+  margin: none;
+  border: none;
+  }
 
+</style>
+<form id="my_form">
+	<p> Introduceti primul numar: </p>
+	<input type="text" id="my_input1" /> <br> </br>
+	<p> Introduceti al doilea numar: </p>
+	<input type="text" id="my_input2" /> <br> </br>
+	<input type="text" id="my_sum" class="text1"/> 
+	<input type="button" id="my_buttonS" class="button1" value="Suma" onclick="doSum();" /> 
+		<br> </br>
+	<input type="text" id="my_prod" class="text1"/> 
+	<input type="button" id="my_buttonP" class="button1" value="Produsul" onclick="doProd() ;" /> <br> </br>
+	<input type="reset" value="Reset" onclick="myFunction()">    
+</form>
+	
 <script type="text/javascript">
     function doSum()
     {
@@ -14,20 +41,40 @@
 
         // Add them together and display
         var sum = parseInt(my_input1) + parseInt(my_input2);
-        document.write(sum);
-    }
-	
+		document.getElementById('my_sum').readOnly = true;
+		document.getElementById('my_sum').value = parseInt(sum);
+		
+		changeColor('my_buttonS');
+		}
+		
+	function changeColor(id)
+	{
+		 document.getElementById(id).style.backgroundColor="red";
+	}
+
+		
 	function doProd()
     {
         // Capture the entered values of two input boxes
         var my_input1 = document.getElementById('my_input1').value;
         var my_input2 = document.getElementById('my_input2').value;
 
-        
-		var prod = parseInt(my_input1) * parseInt(my_input2);
-        document.write(prod);
+        var prod = parseInt(my_input1) * parseInt(my_input2);
+		document.getElementById('my_prod').readOnly = true;
+		document.getElementById('my_prod').value = parseInt(prod);
+		
+		changeColor('my_buttonP');
     }
+	
+	function myFunction() 
+	{
+  document.getElementById("myForm").reset();
+	}
+	
 </script>
 </head>
+<body>
+
+</body>
 
 </html>
