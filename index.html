@@ -18,6 +18,7 @@
   border: none;
   }
 
+<!-- SUMA SI PRODUSUL A DOUA NUMERE -->
 </style>
 <form id="my_form">
 	<p> Introduceti primul numar: </p>
@@ -25,8 +26,7 @@
 	<p> Introduceti al doilea numar: </p>
 	<input type="text" id="my_input2" /> <br> </br>
 	<input type="text" id="my_sum" class="text1"/> 
-	<input type="button" id="my_buttonS" class="button1" value="Suma" onclick="doSum();" /> 
-		<br> </br>
+	<input type="button" id="my_buttonS" class="button1" value="Suma" onclick="doSum();" /> <br> </br> 
 	<input type="text" id="my_prod" class="text1"/> 
 	<input type="button" id="my_buttonP" class="button1" value="Produsul" onclick="doProd() ;" /> <br> </br>
 	<input type="reset" value="Reset" onclick="myFunction()">    
@@ -74,7 +74,32 @@
 </script>
 </head>
 <body>
+<!-- SORTARE ALFABETIC -->
+<form>
+	<p> Enter the name of the first fruit: </p>
+	<input type="text" id="my_fruit1" /> <br> </br>
+	<p> Enter the name of the second fruit: </p>
+	<input type="text" id="my_fruit2" /> <br> </br>
+	<p> Enter the name of the third fruit: </p>
+	<input type="text" id="my_fruit3" /> <br> </br>
+	<input type="button" id="my_buttonF" class="button1" value="Sorteaza" onclick="doSort()" /> 
+	<p id="demo">fff</p>
+</form>
+<script>
+ 
+	function doSort()
+    {
+	var name = []; 
+	 //name = document.getElementById('my_fruit1', 'my_fruit2', 'my_fruit3');
+	 name[0] = document.getElementById('my_fruit1').value;
+	 name[1] = document.getElementById('my_fruit2').value;
+	 name[2] = document.getElementById('my_fruit3').value;
+	//var list = name.value;
+	 name.sort();
+	 document.getElementById('demo').innerHTML = name;
+	}
 
+</script>
 </body>
 
 </html>
