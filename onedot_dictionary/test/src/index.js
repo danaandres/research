@@ -1,19 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {dictionaries} from './data'
-import {dictionaryDefinition} from './data'
+import DictionaryPanel from './DictionaryPanel';
 
-var items = dictionaries.map((dictionary, idx)=>
-            <App  context = {dictionary} definition={dictionaryDefinition}/>
-    );
-
-ReactDOM.render(
-<div>
-        {           items    }
-</div>,
+ReactDOM.render(<DictionaryPanel/>,
 document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
