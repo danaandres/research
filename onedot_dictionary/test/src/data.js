@@ -1,7 +1,8 @@
-export const dictionaries = [
+
+export const predefinedDictionaries = [
     {
-        customerName : "Customer 1",
-        dictionary : [
+        customerName: "Customer 1",
+        dictionary: [
             { id: 1, domain: 'Stonegrey', range: 'Dark Grey' },
             { id: 2, domain: 'Dark Grey', range: 'Stone grey' },
             { id: 3, domain: 'Mystic Silver', range: 'Silver' },
@@ -10,8 +11,8 @@ export const dictionaries = [
         ]
     },
     {
-        customerName : "Customer 2",
-        dictionary : [
+        customerName: "Customer 2",
+        dictionary: [
             { id: 1, domain: 'Blue', range: 'Dark Grey' },
             { id: 2, domain: 'Dark Grey', range: 'Black' },
             { id: 2, domain: 'Black', range: 'Blue' },
@@ -23,13 +24,14 @@ export const dictionaries = [
 
 export const dictionaryDefinition = [
     { title: 'Domain', field: 'domain' },
-    { title: 'Range', field: 'range' },      
+    { title: 'Range', field: 'range' },
     {
-      title: 'Valid',
-      field: 'valid',
-      editable: 'false',
-      lookup: { 1: 'Valid', 2: 'Warning', 3:'Error' },
+        title: 'Valid',
+        field: 'valid',
+        editable: 'false',
+        lookup: { 1: 'Valid', 2: 'Warning', 3: 'Error' },
     },
-    { title: 'Details', field: 'details' },      
+    { title: 'Details', field: 'details' },
 
-  ]
+]
+

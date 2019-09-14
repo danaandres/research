@@ -1,42 +1,72 @@
 import React from 'react';
 import App from './App';
-import {dictionaries} from './data'
-import {dictionaryDefinition} from './data'
-import { Button } from '@material-ui/core';
+import {predefinedDictionaries} from './data';
+import {dictionaryDefinition} from './data';
+import styled from 'styled-components';
 
-function DictionaryPanel(props) {
-    
-    const [state, setState] = React.useState({
-      dictionaries:dictionaries,
-      
-      });
-
-      function addDictionary(e){
-        var dictionary = {
-            customerName : "Customer 3",
-            dictionary : []
-        };
-
-        setState(prevState => ({
-          dictionaries: [...prevState.dictionaries, dictionary]
-        }));
-      };
-
-      var items = dictionaries.map((dictionary, idx)=>
-          <App  context = {dictionary} definition={dictionaryDefinition}/>
-      );
-
-      return (
-        <div>
-        <div>
-          <Button onClick={addDictionary}>Wohoo</Button>
-        </div>        
-        <div>
-          {items}
-        </div></div>        
-    );
+function loadDictionaries(){
+  return JSON.parse(localStorage.getItem("data")|| JSON.stringify(predefinedDictionaries));
 }
 
+function saveDictionaries(dictionaries){
+  localStorage.setItem("data",JSON.stringify(dictionaries));
+}
+
+class DictionaryPanel extends React.Component {
+  constructor(props) {
+      super(props);
+
+      var workingDictionaries = loadDictionaries();
+            
+      this.state ={
+        dictionaries:workingDictionaries,         
+        };
+        
+        this.addDictionary = this.addDictionary.bind(this);
+    }
+
+    addDictionary(){
+        var dictionary = {
+            customerName : 'Customer '+(this.state.dictionaries.length+1),
+            dictionary : []
+        }
+        
+        var state = this.state;
+
+        state.dictionaries.push(dictionary);
+        
+        saveDictionaries(state.dictionaries);
+
+        this.setState(state);  
+
+      }
+
+      render(){
+
+        var items = this.state.dictionaries.map((dictionary, idx)=>
+            <App  context = {dictionary} definition={dictionaryDefinition} entireCatalog={this.state.dictionaries}/>
+        );
+
+         const CounterContainer= styled.div`
+           width: 80%;`
+
+        return (
+            <CounterContainer>
+            <div>
+             <Button onClick={this.addDictionary} >Add Customer</Button>
+            </div>        
+            <div>
+              {items}
+            </div>
+            </CounterContainer>        
+        );
+      }
+}
+export const Button = styled.button `
+color: grey;
+font-size: 15px;
+hover: pointer;
+font-family: "Trebuchet MS", Arial, Helvetica, sans-serif`
 
 export default DictionaryPanel;
 
