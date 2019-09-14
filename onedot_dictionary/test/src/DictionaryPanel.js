@@ -1,5 +1,5 @@
 import React from 'react';
-import App from './App';
+import DictionaryControl from './DictionaryControl';
 import {predefinedDictionaries} from './data';
 import {dictionaryDefinition} from './data';
 import styled from 'styled-components';
@@ -44,7 +44,7 @@ class DictionaryPanel extends React.Component {
       render(){
 
         var items = this.state.dictionaries.map((dictionary, idx)=>
-            <App  context = {dictionary} definition={dictionaryDefinition} entireCatalog={this.state.dictionaries}/>
+            <DictionaryControl  context = {dictionary} definition={dictionaryDefinition} entireCatalog={this.state.dictionaries}/>
         );
 
          const CounterContainer= styled.div`

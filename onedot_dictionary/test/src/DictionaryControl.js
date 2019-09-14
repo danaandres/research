@@ -17,7 +17,7 @@ function saveDictionaries(state, data){
   localStorage.setItem("data", JSON.stringify(updatedDictionaries));
 }
 
-function App({ context, definition, entireCatalog }) {
+function DictionaryControl({ context, definition, entireCatalog }) {
   Validate(context.dictionary);
 
   const [state, setState] = React.useState({
@@ -164,4 +164,4 @@ function ValidatesCycles(dictionary, entry, idx, evaluatedIdx, chain) {
   });
 }
 
-export default App
+export default DictionaryControl
